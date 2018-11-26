@@ -2,10 +2,11 @@
 <html lang="en" ng-app='phonecatApp'>
 <head>
   <meta charset="utf-8">
-  <title>My HTML File</title>
+  <title>Car List</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/angular/angular.js"></script>
+  <script src="js/controllers.js"></script>
 </head>
 <body ng-controller="PhoneListCtrl">
 
@@ -18,6 +19,19 @@
       </p>
     </li>
   </ul>
+
+  <p>Total number of phones: {{phones.length}}</p>
+
+  <p>Hello, {{name}}!</p>
+
+  <table>
+    <tr>
+      <th>row number</th>
+    </tr>
+    <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]">
+      <td>{{i + 1}}</td>
+    </tr>
+  </table>
   
 </body>
 </html>
