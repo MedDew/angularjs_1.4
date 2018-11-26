@@ -9,3 +9,19 @@ describe('my app', function() {
   });
 
 });
+
+
+describe('PhoneListCtrl', function()
+{
+  beforeEach(function() {
+    browser.get('app/index.html');
+  });
+  it('should create "phones" model with 3 phones', function() 
+  {
+    var scope = {},
+    ctrl = new PhoneListCtrl(scope);
+    console.log("YAWP");
+    expect(scope.phones.length).toBe(3);
+  });
+
+});
