@@ -60,6 +60,7 @@ describe('PhoneCat App', function() {
       expect(browser.getTitle()).toMatch(/Google Phone Gallery : nexus$/);
     });*/
     
+    /*
     it('should be possible to control phone order via the drop down select box', function() {
       
       var phoneNameColumn = element.all(by.repeater('phone in phones').column('phone.name'));
@@ -98,6 +99,16 @@ describe('PhoneCat App', function() {
         "Motorola XOOM\u2122 with Wi-Fi"
       ]);
     });
+    */
+
+   it('should render phone specific links', function() {
+    var query = element(by.model('query'));
+    query.sendKeys('sa');
+    element(by.css('.phones li a')).click();
+    browser.getLocationAbsUrl().then(function(url) {
+      expect(url).toEqual('/phones/samsung-gem');
+    });
+  });
 
   });
 });
