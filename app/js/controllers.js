@@ -53,7 +53,18 @@ phonecatControllers.controller("PhoneDetailCtrl", ["$scope", "$routeParams", "$h
         $scope.phoneId = $routeParams.phoneId;
         $http.get("phones/"+$routeParams.phoneId+".json").success(function(data){
             $scope.phone = data;
-        })
+            $scope.mainImageUrl = data.images[0];
+        });
+        
+        $scope.setImage = function(imageUrl) {
+            console.log("IMAGE : "+imageUrl)
+            $scope.mainImageUrl = imageUrl;
+        };
+
+        $scope.hello = function(name)
+        {
+            alert('Hello '+(name || "World") + "!");
+        };
     }
 
 ]);
