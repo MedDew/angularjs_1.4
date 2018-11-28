@@ -3,11 +3,15 @@
 /* Controllers */
 var phonecatControllers = angular.module('phonecatControllers', []);
 
-phonecatControllers.controller('PhoneListCtrl', ["$scope", "$http", function ($scope, $http)
+phonecatControllers.controller('PhoneListCtrl', ["$scope", "Phone", function ($scope, Phone)//$http
 {
-  $http.get("phones/phones.json").success(function(data){
-    $scope.phones = data;//.splice(0,5);  
-  });
+    //Simplify request made withg the lower level http service with the use of our custom service Phone
+    $scope.phones =  Phone.query();
+//   $http.get("phones/phones.json").success(function(data){
+//     $scope.phones = data;//.splice(0,5);  
+//   });
+
+
 //   $scope.phones = 
 //   [
 //     {
@@ -47,14 +51,17 @@ phonecatControllers.controller('PhoneListCtrl', ["$scope", "$http", function ($s
   $scope.orderProp = "age";
 }]);
 
-phonecatControllers.controller("PhoneDetailCtrl", ["$scope", "$routeParams", "$http" ,
-    function($scope, $routeParams, $http)
+phonecatControllers.controller("PhoneDetailCtrl", ["$scope", "$routeParams", "Phone", //"$http" ,
+    function($scope, $routeParams, Phone)//$http)
     {
         $scope.phoneId = $routeParams.phoneId;
-        $http.get("phones/"+$routeParams.phoneId+".json").success(function(data){
-            $scope.phone = data;
-            $scope.mainImageUrl = data.images[0];
+        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone){
+            $scope.mainImageUrl = phone.images[0];
         });
+        // $http.get("phones/"+$routeParams.phoneId+".json").success(function(data){
+        //     $scope.phone = data;
+        //     $scope.mainImageUrl = data.images[0];
+        // });
         
         $scope.setImage = function(imageUrl) {
             console.log("IMAGE : "+imageUrl)
