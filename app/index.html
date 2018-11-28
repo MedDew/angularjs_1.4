@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Google Phone Gallery {{ ' : ' +query}}</title>
+  <!-- jQuery is used for JavaScript animations (include this before angular.js) -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/angular/angular.js"></script>
@@ -12,6 +14,13 @@
   <script src="js/filters.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="js/services.js"></script>
+
+  <!-- for CSS Transitions and/or Keyframe Animations -->
+  <link rel="stylesheet" href="css/animations.css">
+  <!-- required module to enable animation support in AngularJS -->
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <!-- for JavaScript Animations -->
+  <script src="js/animations.js"></script>
 </head>
 <body >
 
@@ -19,11 +28,13 @@
   <p>{{ 1304375948024 | date }}</p>
   <p>{{ 1304375948024 | date:"MM/dd/yyyy @ h:mma" }}</p>
   <input ng-model="userInput"> Uppercased: {{ userInput | uppercase }}
-  <div ng-view>
+  <div class="view-container">
+    <div ng-view class="view-frame">
 
 
-    <!-- <p>{{orderProp}}</p> -->
-    <p>q 1: {{query}}</p>
+      <!-- <p>{{orderProp}}</p> -->
+      <p>q 1: {{query}}</p>
+    </div>
   </div>
   .<p>q 2 :{{query}}</p>
   <!-- <p>{{orderProp}}</p> -->
