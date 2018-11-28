@@ -9,10 +9,16 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
 </head>
 <body >
 
+  <p>{{ {foo: "bar", baz: 23} | json }}</p>
+  <p>{{ 1304375948024 | date }}</p>
+  <p>{{ 1304375948024 | date:"MM/dd/yyyy @ h:mma" }}</p>
+  <input ng-model="userInput"> Uppercased: {{ userInput | uppercase }}
   <div ng-view>
+
 
     <!-- <p>{{orderProp}}</p> -->
     <p>q 1: {{query}}</p>
